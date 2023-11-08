@@ -77,7 +77,8 @@ public class Project_Jade_Lowe {
             totalNonsmoker++;
       
          } // End while loop
-      
+         
+         // Print the smoker/nonsmoker totals
          System.out.println("\n\nThe number of policies with a smoker is: " + totalSmoker);
          System.out.println("The number of policies with a non-smoker is: " + totalNonsmoker);
       
