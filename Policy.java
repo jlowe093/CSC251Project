@@ -1,12 +1,15 @@
 
 public class Policy{
    
+   private static int totalPolicy;
    private int policyNum;
    
    // mutator (setter) method
    // @param setPolicyNumber to set the policy number
    public void setPolicyNum(int setPolicyNumber) {
       policyNum = setPolicyNumber;
+      
+      totalPolicy++;
    }
    
    // accessor (getter) method
