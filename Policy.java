@@ -16,9 +16,10 @@ public class Policy{
    }
    
    // Data display method 
-   public void displayPolicy () {
-      
-      System.out.println("\n\nPolicy Number: " + policyNum);
+   public String toString()
+   {
+      return String.format("\nPolicy Number: " + policyNum + 
+                           accountHolder.toString());
    } // End display method
 
 

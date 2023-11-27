@@ -184,24 +184,20 @@ public class PolicyHolder {
       return price;
    } // End price method 
    
+   
+   
    // Data display method 
-   public void displayPolicy () {
-      
-      System.out.println("Provider Name: " + providerName);
-      System.out.println("Policyholder's First Name: " + firstName);
-      System.out.println("Policyholder's Last Name: " + lastName);
-      System.out.println("Policyholder's Age: " + age);
-      System.out.println("Policyholder's Smoking Status: " + smokingStatus);
-      System.out.print("Policyholder's Height: ");
-      System.out.printf("%,.1f",height);      // Format the output
-      System.out.print(" inches");
-      System.out.print("\nPolicyholder's Weight: ");
-      System.out.printf("%,.1f",weight);      // Format the output
-      System.out.print(" pounds");
-      System.out.print("\nPolicyholder's BMI: ");
-      System.out.printf("%,.2f",bmi);      // Format the output
-      System.out.print("\nPolicy Price: $");
-      System.out.printf("%,.2f",price);      // Format the output
-   } // End display method
+   public String toString()
+   {
+      return String.format("\nProvider Name: " + providerName +
+                           "\nPolicyholder's First Name: " + firstName +
+                           "\nPolicyholder's Last Name: " + lastName +
+                           "\nPolicyholder's Age: " + age +
+                           "\nPolicyholder's Smoking Status: " + smokingStatus +
+                           "\nPolicyholder's Height: %,.1f",height + " inches" +
+                           "\nPolicyholder's Weight: %,.1f",weight + " pounds" +
+                           "\nPolicyholder's BMI: %,.2f",bmi +
+                           "\nPolicy Price: $%,.2f",price);  
+   } // End toString method
 
 } // End class
