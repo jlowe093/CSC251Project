@@ -40,7 +40,7 @@ public class PolicyHolder {
       @param inputheight
       @param inputweight
    */
-   public PolicyHolder (String inputproviderName, String inputfirstName, String inputlastName, 
+   public PolicyHolder(String inputproviderName, String inputfirstName, String inputlastName, 
                      int inputage,String inputsmokingStatus, double inputheight,double inputweight) {
       providerName = inputproviderName;
       firstName = inputfirstName;
@@ -52,7 +52,18 @@ public class PolicyHolder {
    
    }
    
-   
+   public PolicyHolder(PolicyHolder object2)
+   {
+      providerName = object2.providerName;
+      firstName = object2.firstName;
+      lastName = object2.lastName;
+      age = object2.age;
+      smokingStatus = object2.smokingStatus;
+      height = object2.height;
+      weight = object2.weight;
+      bmi = object2.bmi;
+      price = object2.price;
+   }
    
    
    
@@ -144,9 +155,9 @@ public class PolicyHolder {
    // @param weight to calculate BMI
    // @param height to calculate BMI
    // @return bmi to return the BMI
-   public double calculateBMI(double weight, double height) {
+   public void calculateBMI() {
       bmi = ((weight *703)/(height*height));
-      return bmi;
+      
    } // End BMI method
    
    // Policy price calculator method
@@ -154,7 +165,7 @@ public class PolicyHolder {
    // @param smokingStatus to determine smoking fee
    // @param BMI to determine BMI fee
    // @return price to return the policy price
-   public double calculatePrice(int age, String smokingStatus, double BMI) {
+   public void calculatePrice() {
       double ageFee;
       double smokeFee;
       double bmiFee;
@@ -173,15 +184,15 @@ public class PolicyHolder {
          smokeFee = 0.00;
       }
       
-      if (BMI > 35) {
-         bmiFee = (BMI - 35) * 20;
+      if (bmi > 35) {
+         bmiFee = (bmi - 35) * 20;
       }
       else {
          bmiFee = 0.00;
       }
       
       price = (600 + ageFee + smokeFee + bmiFee);
-      return price;
+      
    } // End price method 
    
    
@@ -189,15 +200,23 @@ public class PolicyHolder {
    // Data display method 
    public String toString()
    {
-      return String.format("\nProvider Name: " + providerName +
+      String str = ("\nProvider Name: " + providerName +
                            "\nPolicyholder's First Name: " + firstName +
                            "\nPolicyholder's Last Name: " + lastName +
                            "\nPolicyholder's Age: " + age +
                            "\nPolicyholder's Smoking Status: " + smokingStatus +
-                           "\nPolicyholder's Height: %,.1f",height + " inches" +
-                           "\nPolicyholder's Weight: %,.1f",weight + " pounds" +
-                           "\nPolicyholder's BMI: %,.2f",bmi +
-                           "\nPolicy Price: $%,.2f",price);  
+                           "\nPolicyholder's Height: " + 
+                           ("%,.1f",height) + 
+                           " inches" +
+                           "\nPolicyholder's Weight: " + 
+                           ("%,.1f",weight) + 
+                           " pounds" +
+                           "\nPolicyholder's BMI: " +
+                           ("%,.2f",bmi) +
+                           "\nPolicy Price: $"
+                           ("%,.2f",price);
+                           
+      return str;  
    } // End toString method
 
 } // End class

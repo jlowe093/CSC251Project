@@ -33,7 +33,6 @@ public class Project_Jade_Lowe {
       double readWeight;
       int totalSmoker = 0;
       int totalNonsmoker = 0;
-      double BMI;
    
       ArrayList<Policy> accountList = new ArrayList<Policy>();    // Create a new ArrayList
 
@@ -58,17 +57,19 @@ public class Project_Jade_Lowe {
          if (inputFile.hasNext())
             inputFile.nextLine(); // Skip the blank line in file
 
-         // Create a Policy Account object.
-         Policy account = new Policy (readPolicyNum, readProviderName, readFirstName, readLastName, 
-                           readAge, readSmokingStatus, readHeight, readWeight);
+         PolicyHolder currentAccountHolder = new PolicyHolder(readProviderName, readFirstName, readLastName, 
+                                       readAge, readSmokingStatus, readHeight, readWeight);
+
+         currentAccountHolder.calculateBMI();   // Call method to calculate BMI
          
-         BMI = account.calculateBMI(readWeight, readHeight);   // Call method to calculate BMI
-         
-         account.calculatePrice(readAge, readSmokingStatus, BMI);    // Call method to calculate price
+         currentAccountHolder.calculatePrice();    // Call method to calculate price
    
-         account.displayPolicy();   // Call method to display policy info
+          // Create a Policy Account object.
+         Policy account = new Policy (readPolicyNum,currentAccountHolder);
          
          accountList.add(account);  // Add object to ArrayList
+         
+         
          
          // if/else statement to tally smoking/nonsmoking policies
          if (readSmokingStatus.equalsIgnoreCase("smoker")) 
@@ -78,8 +79,15 @@ public class Project_Jade_Lowe {
       
          } // End while loop
          
+         for(int i=0; i < accountList.size(); i++){
+            System.out.println(accountList.get(i));//notice how the toString() method does not need to be explicitly called when printing out information of our Course class
+            System.out.println();//print a blank line between Courses for easier readability
+         }
+         
+         System.out.println("\nThere were " + Policy.totalPolicy + " Policy objects created.");
+         
          // Print the smoker/nonsmoker totals
-         System.out.println("\n\nThe number of policies with a smoker is: " + totalSmoker);
+         System.out.println("\nThe number of policies with a smoker is: " + totalSmoker);
          System.out.println("The number of policies with a non-smoker is: " + totalNonsmoker);
       
       inputFile.close();   // Close the file

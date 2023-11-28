@@ -1,15 +1,24 @@
 
 public class Policy{
    
-   private static int totalPolicy;
+   public static int totalPolicy;
    private int policyNum;
+   private PolicyHolder accountHolder;
+   
+   public Policy(int setPolicyNum, PolicyHolder holder) {
+      policyNum = setPolicyNum;
+      
+      accountHolder = new PolicyHolder(holder);
+      
+      totalPolicy++;   
+   } 
+   
    
    // mutator (setter) method
    // @param setPolicyNumber to set the policy number
    public void setPolicyNum(int setPolicyNumber) {
       policyNum = setPolicyNumber;
       
-      totalPolicy++;
    }
    
    // accessor (getter) method
@@ -18,11 +27,18 @@ public class Policy{
       return policyNum;
    }
    
+   public void setPolicyHolder(PolicyHolder holder)
+   {
+      accountHolder = new PolicyHolder(holder);
+   }
+   
    // Data display method 
    public String toString()
    {
-      return String.format("\nPolicy Number: " + policyNum + 
+      String str = ("\nPolicy Number: " + policyNum + 
                            accountHolder.toString());
+      
+      return str;
    } // End display method
 
 
